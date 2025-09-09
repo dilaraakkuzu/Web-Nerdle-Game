@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nerdle – Sayı & İşlem Bulmaca</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Nerdle <span class="badge">Web</span></h1>
+      <div class="controls">
+        <label class="reveal-toggle">
+          <input id="toggleReveal" type="checkbox" /> Cevabı göster
+        </label>
+        <button id="newBtn" title="Yeni oyun">↻ Yeni</button>
+      </div>
+    </header>
+
+    <div id="message" class="msg"></div>
+    <div id="board" class="board" aria-live="polite"></div>
+
+    <div class="keyboard" aria-label="Ekran klavyesi">
+      <div class="kbd-row" id="kb1"></div>
+      <div class="kbd-row" id="kb2"></div>
+      <div class="kbd-row" id="kb3"></div>
+    </div>
+    <div class="footer">8 karakterlik geçerli bir eşitliği tahmin et: ör. <b>12+34=46</b>. 6 denemen var.</div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

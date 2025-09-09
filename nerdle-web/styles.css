@@ -1,0 +1,102 @@
+:root {
+  --bg: #0f172a;        /* arka plan */
+  --fg: #e2e8f0;        /* metin rengi */
+  --muted: #94a3b8;     /* ikincil metin */
+  --key: #1f2937;       /* tuş arka planı */
+  --accent: #22d3ee;    /* vurgu */
+  --correct: #22c55e;   /* doğru (yeşil) */
+  --present: #eab308;   /* içeriyor (sarı) */
+  --danger: #ef4444;    /* yok/olmayan (kırmızı) */
+  --border: #334155;    /* kenarlık rengi */
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  background: radial-gradient(1200px 800px at 50% -10%, #58647d, var(--bg));
+  color: var(--fg);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.app { width: min(700px, 96vw); }
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+h1 { font-size: 22px; letter-spacing: .5px; margin: 0; display: flex; gap: 10px; align-items: center; }
+h1 .badge { font-size: 12px; color: var(--bg); background: var(--accent); padding: 2px 8px; border-radius: 999px; }
+.controls { display:flex; gap:8px; align-items:center; }
+
+button {
+  background: var(--key);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: .3px;
+  transition: transform .06s ease, background .2s ease, border-color .2s ease;
+  user-select: none;
+}
+button:hover { background: #9f7998; }
+button:active { transform: translateY(1px); }
+
+/* Boşlukları azalt */
+.board { display: grid; gap: 6px; margin: 8px auto 14px; }
+.row { display: grid; grid-template-columns: repeat(var(--cols), 1fr); gap: 1px; }
+
+/* Kutuları biraz küçült */
+.tile {
+  width: 46px;
+  height: 52px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 22px;
+  text-transform: uppercase;
+  background: rgba(118, 149, 165, 0.829);
+  transition: transform .15s ease, background .2s ease, border-color .2s ease;
+}
+.tile.filled  { border-color: var(--muted); }
+.tile.correct { background: var(--correct); border-color: var(--correct); color: #05140a; }
+.tile.present { background: var(--present); border-color: var(--present); color: #261b00; }
+/* Olmayan karakterler kırmızı */
+.tile.absent  { background: var(--danger); border-color: var(--danger); color: #fff; }
+
+.keyboard { display: grid; gap: 8px; }
+.kbd-row { display:flex; gap:8px; justify-content:center; }
+
+.key {
+  background: var(--key);
+  border: 1px solid var(--border);
+  color: var(--fg);
+  height: 46px;
+  min-width: 40px;
+  border-radius: 10px;
+  display:grid;
+  place-items:center;
+  padding: 0 10px;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+}
+.key.wide    { min-width: 84px; }
+.key.correct { background: var(--correct); border-color: var(--correct); color: #05140a; }
+.key.present { background: var(--present); border-color: var(--present); color: #261b00; }
+/* Klavyede de kırmızı */
+.key.absent  { background: var(--danger); border-color: var(--danger); color: #fff; }
+
+.msg { min-height: 26px; text-align: center; color: var(--muted); font-weight: 600; }
+.msg.error { color: var(--danger); }
+.footer { text-align: center; font-size: 12px; color: var(--muted); margin-top: 10px; }
